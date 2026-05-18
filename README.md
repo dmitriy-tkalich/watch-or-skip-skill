@@ -1,6 +1,6 @@
 # Watch or Skip YouTube video skill
 
-See if podcast, interview, guide on YouTube worth watching or skip it.
+Check if podcast, interview, guide on YouTube worth watching or skip it.
 
 The skill fetches YouTube transcript with [yt-dlp](https://github.com/yt-dlp/yt-dlp).
 
