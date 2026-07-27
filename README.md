@@ -1,8 +1,25 @@
 # Watch or Skip YouTube video skill
 
-Check if podcast, interview, guide on YouTube worth watching or skip it.
+Check if a podcast, interview, or talk on YouTube is worth watching — or skip it.
 
-The skill fetches YouTube transcript with [yt-dlp](https://github.com/yt-dlp/yt-dlp).
+The skill fetches a **timestamped transcript** with [yt-dlp](https://github.com/yt-dlp/yt-dlp),
+probes the **visual format** from YouTube storyboard thumbnails (a few hundred KB —
+the video itself is never downloaded), and judges the content against a values
+constitution (durable, relevant, deep, honest, correct), calibrated to a reader
+profile in `~/.watch-or-skip/reader.md`.
+
+## What's in v2
+
+- `scripts/fetch_transcript.py` — metadata + chapters + a `[MM:SS]`-stamped
+  transcript. Correct rolling-window dedup for YouTube auto-subs; native
+  captions → auto-generated → English auto-translate fallback (flagged).
+  Every timecode link in a review is grounded in a real stamp, not estimated.
+- `scripts/probe_format.py` — samples 2-3 storyboard mosaic sheets so the
+  review can say "talking heads — fine as background audio" vs "slides carry
+  the data — needs the screen" (~2k image tokens, no ffmpeg, no video download).
+- `references/exemplars.md` — voice exemplars, loaded only on the first run;
+  after that, your own run history anchors the voice.
+- `tests/` — parser unit tests (`python3 -m pytest -q`, no network).
 
 ## Installation
 
@@ -17,7 +34,7 @@ brew install yt-dlp
 
 ## Usage
 
-Copy YouTube video URL which you want to analyze.
+Copy a YouTube video URL you want to analyze.
 
 **Example:**
 
@@ -28,22 +45,15 @@ Copy YouTube video URL which you want to analyze.
 **Output:**
 
 ```md
----
-url: https://www.youtube.com/watch?v=0lJKucu6HJc
-title: Sam Altman - How to Succeed with a Startup
-channel: Y Combinator
-language: en
-duration: 16:07
-verdict: Worth 15 min if you're new to YC canon. Skip if you've read PG essays before.
----
-
 Worth 15 min if you haven't absorbed YC canon. Skip if you've read PG essays or watched a YC talk before — you've heard 80% of this already.
 
 Mid-2018 Sam Altman, pre-OpenAI-CEO, doing greatest-hits startup advice as a Startup School lecture. Most of it is bromide compressed into bullets. Two ideas are sharp enough to earn the 16 minutes.
 
-**Real trends look like obsessive use, not high sales.** ([2 min in](https://www.youtube.com/watch?v=0lJKucu6HJc&t=120s)) iPhone in its first year sold ~1M units — but those owners used it hours a day. VR in 2018 had comparable launch-window numbers — but most headsets sat in drawers. The test isn't units sold, it's hours-per-user among early adopters. The 2018 VR call aged well: Vision Pro shipped, hours-per-user stayed low, his framing still picks the right side. Apply it now to "AI agents" — Cursor's daily-active hours look like iPhone-2008; most agent frameworks look like 2018 VR.
+*How to Succeed with a Startup* — Y Combinator, 16 min, English. Speaker + full-screen text slides; the slides only echo his points — fine as background audio.
 
-**The hard startup is easier than the easy one.** ([4 min in](https://www.youtube.com/watch?v=0lJKucu6HJc&t=262s)) Capital is cheap, talent isn't. Getting employee 8 to leave a FAANG job for a slightly-better-CRM is brutal; getting them for a moonshot is doable. Ambition flips from risk factor to recruiting tool — easy-mode startups die mid-headcount-ramp because nobody good wants to join them.
+**Real trends look like obsessive use, not high sales.** ([2 min in](https://www.youtube.com/watch?v=0lJKucu6HJc&t=120s)) iPhone in its first year sold ~1M units — but those owners used it hours a day. VR in 2018 had comparable launch-window numbers — but most headsets sat in drawers. The test isn't units sold, it's hours-per-user among early adopters.
 
-The team-traits middle ([6 min onward](https://www.youtube.com/watch?v=0lJKucu6HJc&t=390s)) is the weakest stretch — optimist / action-bias / "we'll figure it out" platitudes. The "one no vs one yes" frame [13 min in](https://www.youtube.com/watch?v=0lJKucu6HJc&t=793s) is a clean third idea: at a big co every veto kills it; at a startup one yes saves it. No sponsor reads, no intro bloat — the talk is already its own dense version.
+**The hard startup is easier than the easy one.** ([4 min in](https://www.youtube.com/watch?v=0lJKucu6HJc&t=262s)) Capital is cheap, talent isn't. Getting employee 8 to leave a FAANG job for a slightly-better-CRM is brutal; getting them for a moonshot is doable.
+
+The team-traits middle ([6 min onward](https://www.youtube.com/watch?v=0lJKucu6HJc&t=390s)) is the weakest stretch — optimist / action-bias platitudes. No sponsor reads, no intro bloat — the talk is already its own dense version.
 ```
