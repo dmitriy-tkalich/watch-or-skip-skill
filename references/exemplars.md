@@ -1,8 +1,10 @@
 # Voice exemplars
 
-Load this file only when no prior runs exist in `~/.watch-or-skip/runs/` —
-after the first run, real runs (plus their `## user-feedback` sections) are the
-voice anchors, not these.
+Canonical voice anchors — read this file on every run, alongside the reader
+profile's style calibration. Exemplars marked **reader-edited** were rewritten
+by the reader by hand and are ground truth: when they conflict with the
+synthetic ones, they win. Prior runs in `~/.watch-or-skip/runs/` are an
+archive for channel track record, not voice anchors.
 
 **Short form, one big idea, ~30-60 min video:**
 
@@ -20,22 +22,26 @@ voice anchors, not these.
 >
 > Skip: first 6 min (hosts gushing), 51 min (home-country-bias debate), last 5 min (filler).
 
-**Skip-with-carve-out, off-jurisdiction, with Transfer blocks:**
+**Watch-selectively, operator reader — reader-edited (2026-07-28), ground truth:**
 
-> **Skip with a 15-min carve-out.** Reader's profile: non-US founder — US tax-shelter advice doesn't apply to your stack. But 3 mental models port to any jurisdiction with capped tax-advantaged accounts.
->
-> *Mega Backdoor Roth & Other 401k Tricks* — BiggerPockets Money #387, 68 min, English. Talking heads — works as background audio.
->
-> **Tax-advantaged space is use-it-or-lose-it — missing one $23k year forfeits ~$160k by retirement** ([12 min in](https://www.youtube.com/watch?v=XXX&t=720s)). Annual contribution caps don't roll forward in the US. At 7% real for 35 years, one skipped year burns six figures of terminal value. **Transfer:** any capped allowance (HSA, ISA, RRSP, LISA, your country's equivalent) is a per-year lottery ticket you either pull or burn. The dollar number is jurisdiction-specific; the cadence-or-lose-it logic isn't.
->
-> **Mega backdoor route works only if the plan permits in-service withdrawals — IRS rule alone is not enough** ([28 min in](https://www.youtube.com/watch?v=XXX&t=1680s)). The plan documents define what's actually possible. Most employees never read them. **Transfer:** in any optimization game the binding constraint is usually the operator's specific implementation, not the regulator's headline rule. Always read the plan docs, terms of service, API quirks — that's where the real game is.
->
-> **Contribution order: employer match → HSA → Roth → taxable, not the other way around** ([41 min in](https://www.youtube.com/watch?v=XXX&t=2460s)). Match is 100% instant return; HSA is triple-tax-free if used correctly; Roth wins if your future bracket exceeds current. **Transfer:** in any sequencing problem (where to deploy $X first), free-money slots come before tax-arbitrage slots come before plain investment slots. Generalizes to grant applications, credit-card sign-up bonuses, employer benefits.
->
-> Weak: 12 min on hosts' personal stories at the start, sponsor read at 50 min.
->
-> 15 min on jurisdiction-portable logic: [12-28 min](https://www.youtube.com/watch?v=XXX&t=720s) — caps as lottery tickets, then plan-document discipline.
+The reader rewrote this review by hand; it outranks every synthetic exemplar
+above. Note what the edit did: verdicts framed as *decisions the reader is
+facing* ("14 minutes sharpen three live founder decisions"), skepticism about
+weakly-evidenced claims even when quotable ("useful diagnostic, weakly
+evidenced conclusion… ignore the obituary"), mechanisms named explicitly, no
+flattery of the reader, and skip-ranges that cover everything not named
+worth watching.
 
-The third exemplar's pattern: verdict → reader-context filter → metadata+format →
-each idea gets a claim-with-specifics header + unpack + `**Transfer:**` block →
-weak/COI line → triage range.
+> **Watch selectively — for you, the durability thesis alone does not earn 48 minutes, but 14 minutes sharpen three live founder decisions: where a software company's "hard bit" must move, what AI changes about co-founder selection, and when a pivot is evidence rather than exhaustion.**
+>
+> The useful test is one sentence: "your startup has to have a hard bit." Code used to qualify; now YC says the difficulty must live in distribution, regulation, proprietary technical work, or atoms.
+>
+> *What Actually Makes A Startup Durable* — Y Combinator, 48 min, English auto-generated captions. Four YC partners answering audience questions on stage; the screen only repeats "Live in the future, then build what's missing." Nothing visual carries data, so use it as background audio at 2x.
+>
+> **The title's entire durability case takes 78 seconds — useful diagnostic, weakly evidenced conclusion** ([6m54s in](https://www.youtube.com/watch?v=99sPd15j3Zc&t=414s)). The mechanism is right: if implementation cost collapses, implementation stops screening competitors; the durable difficulty moves to brutal B2B sales, a banking licence, hardware, deep technical knowledge, or distribution. The leap to "Calendly or DocuSign [are] basically dead" is assertion, not analysis: incumbency, workflow embedding, trust, data, and distribution do not vanish because a clone is cheap. Use "where is the hard bit?" in strategy reviews; ignore the obituary.
+>
+> **AI makes complementary skills less important, but makes a co-founder's emotional-regulation function more visible** ([15m28s in](https://www.youtube.com/watch?v=99sPd15j3Zc&t=928s)). Their claim is that AI can help a technical founder learn selling faster than before, so "technical founder + business founder" is no longer the default pairing. Their replacement filter is sharper: choose the smartest, most determined, hardest-working person you know; add integrity and aligned values; ask whether you would fear competing against them—and whether they can pull you out of a crisis without joining your mania. That generalizes beyond a new startup: it is a better test for an operating partner than résumé complementarity.
+>
+> **The practical AI-native recipe is: expose company artifacts, automate one closed loop, preserve direct customer contact** ([35m12s in](https://www.youtube.com/watch?v=99sPd15j3Zc&t=2112s)). Make email, Drive, and support tickets queryable; choose one narrow process; feed every correction back into the harness; expand only after it creates visible value. Their strong example is sales-call transcription that turns product requests into a prototype before the call ends. The boundary matters more than the tooling: customer conversations and co-founder conversations are the last things they would automate ([38m07s in](https://www.youtube.com/watch?v=99sPd15j3Zc&t=2287s)), because they keep the founder's world-model current.
+>
+> Weak: this is YC promoting YC from a YC stage. The opening claims—intelligence gets 10x cheaper each year, an AI-equipped engineer is 1,000x better, and no programming task is now better done by a human—come with no measurement or boundary conditions. Several audience questions get slogans rather than mechanisms, and the funding/application sections are useful mainly to YC applicants.

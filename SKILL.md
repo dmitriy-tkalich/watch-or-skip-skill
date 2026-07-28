@@ -1,6 +1,6 @@
 ---
 name: watch-or-skip
-version: 2.0.0
+version: 2.1.0
 description: |
   Evaluate a YouTube video (podcast, talk, interview) to decide whether it's
   worth watching for gaining durable knowledge. Fetches a timestamped
@@ -79,17 +79,28 @@ storyboards — rare) → infer format from transcript cues and hedge the line
 transcript exceeds a single Read). Use the chapter list to find the dense
 parts; note where sponsor reads and recaps sit so the reader can skip them.
 
-### 5. Calibrate from prior runs
+### 5. Calibrate voice, then check the channel's track record
+
+Voice comes from two fixed sources, read on every run:
+
+- the reader profile's style calibration (step 1) — who you're writing to;
+- `SKILL_DIR/references/exemplars.md` — the canonical register. Reader-edited
+  exemplars in it are ground truth and never expire.
+
+Prior runs in `~/.watch-or-skip/runs/` are an **archive, not a style guide** —
+do not imitate their phrasing, structure, or verdicts. Consult them only as
+research, when it would change the judgment:
 
 ```bash
-ls -t ~/.watch-or-skip/runs/ 2>/dev/null | head -3
+grep -ril '<channel or speaker>' ~/.watch-or-skip/runs/ 2>/dev/null
 ```
 
-Read up to 3 most recent. They are voice anchors, not templates — match the
-register and bluntness, don't copy phrasings. A `## user-feedback` section is
-an explicit correction the reader left for future you: weight it above
-everything here. If no runs exist, read `SKILL_DIR/references/exemplars.md`
-as the only anchor.
+If this channel or speaker was reviewed before, read those runs for track
+record — a channel that burned the reader twice starts in deficit; one that
+earned "worth it" gets benefit of the doubt — and to catch content the reader
+already triaged. Honor any `## user-feedback` section found there (explicit
+reader corrections); if one states a durable preference, suggest promoting it
+into reader.md at the end of the run.
 
 ### 6. Decide the tier, then write
 
@@ -214,7 +225,7 @@ The reader decides in 10-20 seconds. In order:
    background audio" / "slides carry the data 20-45 min — needs the screen").
 4. **The analysis** — 2-5 claim headers with unpack; Transfer blocks when the
    tier calls for them.
-5. **Weak/COI line** — filler, promo, conflicts. One sentence or short
+5. **Weak line** — filler, promo, conflicts. One sentence or short
    paragraph.
 6. **Triage + skip** — "If you have N min: [link range]"; specific timecode
    ranges to skip (intros, sponsor reads, recaps). Essential for
